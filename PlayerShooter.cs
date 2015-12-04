@@ -9,6 +9,9 @@ public class PlayerShooter : MonoBehaviour {
 	private Elements element= Elements.Lightning;
 	//Lightning Model prefab
 	public GameObject Lightningbullet;
+	public GameObject Firebullet;
+	public GameObject Waterbullet;
+	public GameObject BlackMagicbullet;
 	//Movement power
 	public float power = 10.0f;
 
@@ -40,6 +43,49 @@ public class PlayerShooter : MonoBehaviour {
 				}
 			}
 			break;
+
+		case Elements.Fire :
+			if (Input.GetKey (KeyCode.Mouse0)) {
+			if (Firebullet){
+				GameObject newBullet = Instantiate (Firebullet , //...
+				gameObject.transform.position+gameObject.transform.forward,gameObject.transform.rotation) as GameObject;
+					
+				if (!newBullet.GetComponent<Rigidbody>()){
+					newBullet.AddComponent<Rigidbody>();
+				}
+				newBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * power, ForceMode.VelocityChange);
+				}
+			}
+			break;
+
+		case Elements.Water :
+			if (Input.GetKey (KeyCode.Mouse0)) {
+			if (Waterbullet){
+				GameObject newBullet = Instantiate (Waterbullet , //...
+				gameObject.transform.position+gameObject.transform.forward,gameObject.transform.rotation) as GameObject;
+					
+				if (!newBullet.GetComponent<Rigidbody>()){
+					newBullet.AddComponent<Rigidbody>();
+				}
+					newBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * power, ForceMode.VelocityChange);
+				}
+			}
+			break;
+
+		case Elements.BlackMagic :
+			if (Input.GetKey (KeyCode.Mouse0)) {
+			if (BlackMagicbullet){
+				GameObject newBullet = Instantiate (BlackMagicbullet , //...
+				gameObject.transform.position+gameObject.transform.forward,gameObject.transform.rotation) as GameObject;
+					
+				if (!newBullet.GetComponent<Rigidbody>()){
+					newBullet.AddComponent<Rigidbody>();
+				}
+					newBullet.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * power, ForceMode.VelocityChange);
+				}
+			}
+			break;
+
 		}
 	}
 }
