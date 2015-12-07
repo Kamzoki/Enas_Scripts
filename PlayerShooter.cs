@@ -31,7 +31,7 @@ public class PlayerShooter : MonoBehaviour {
 		switch (element) {
 			//when the player choose '1' or 'lightning'
 			case Elements.Lightning :
-				if (Input.GetKey (KeyCode.Mouse0)) {
+			 if (Input.GetKeyUp (KeyCode.Mouse0)) {
 				if (Lightningbullet){
 					GameObject newBullet = Instantiate (Lightningbullet , //...
 					gameObject.transform.position+gameObject.transform.forward,gameObject.transform.rotation) as GameObject;
@@ -45,7 +45,7 @@ public class PlayerShooter : MonoBehaviour {
 			break;
 
 		case Elements.Fire :
-			if (Input.GetKey (KeyCode.Mouse0)) {
+			if (Input.GetKeyUp(KeyCode.Mouse0)) {
 			if (Firebullet){
 				GameObject newBullet = Instantiate (Firebullet , //...
 				gameObject.transform.position+gameObject.transform.forward,gameObject.transform.rotation) as GameObject;
@@ -59,7 +59,7 @@ public class PlayerShooter : MonoBehaviour {
 			break;
 
 		case Elements.Water :
-			if (Input.GetKey (KeyCode.Mouse0)) {
+			if (Input.GetKeyUp (KeyCode.Mouse0)) {
 			if (Waterbullet){
 				GameObject newBullet = Instantiate (Waterbullet , //...
 				gameObject.transform.position+gameObject.transform.forward,gameObject.transform.rotation) as GameObject;
@@ -73,7 +73,7 @@ public class PlayerShooter : MonoBehaviour {
 			break;
 
 		case Elements.BlackMagic :
-			if (Input.GetKey (KeyCode.Mouse0)) {
+			if (Input.GetKeyUp (KeyCode.Mouse0)) {
 			if (BlackMagicbullet){
 				GameObject newBullet = Instantiate (BlackMagicbullet , //...
 				gameObject.transform.position+gameObject.transform.forward,gameObject.transform.rotation) as GameObject;
