@@ -5,12 +5,14 @@ using System.Collections;
 
 public class Chaser : MonoBehaviour {
 	
-	public float speed = 20.0f;
-	public float maxDist = 20f;
-	public float minDist = 10f;
+	public EnemyShooter ES;
+	public EnemyMove EM;
+	public float speed = 25.0f;
+	public float minDist = 0f;
+	public float midDist = 20f;
+	public float maxDist = 30f;
 	public Transform target;
-	//public EnemyMove em;
-	//public enemyShooter shoot;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,20 +39,16 @@ public class Chaser : MonoBehaviour {
 		float distance = Vector3.Distance(transform.position,target.position);
 
 		//so long as the chaser is farther away than the minimum distance, move towards it at rate speed.
-		if (distance < maxDist && distance > minDist) {
-		//	em.enabled =false;
-			transform.position += transform.forward * speed * Time.deltaTime;
-
+		if (distance > maxDist) {
+			EM.enabled = true;
+			ES.enabled = false;
 		}
-		else if(distance <= minDist){
-		//	em.enabled=false;
-		//	shoot.enabled = true;	
-		//	this.enabled= false;
+		else if (distance <= maxDist && distance >= midDist) {
+			EM.enabled = false;
+			transform.Translate( Vector3.forward * speed * Time.deltaTime);
 		}
-		else{
-			//em.enabled =true;
-		
-		}
+		else if (distance <= midDist && distance >= minDist)
+			ES.enabled = true;
 	}
 
 	// Set the target of the chaser
@@ -58,6 +56,6 @@ public class Chaser : MonoBehaviour {
 	{
 		target = newTarget;
 	}
-
+	
 
 }
